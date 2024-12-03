@@ -18,12 +18,18 @@
 ### Prerequisites
 
 1. **Install Python** (3.6 or higher)
-2. Install the required Python libraries:
+2.a. Install the required Python libraries:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python setup.py install
+```
+
+2.b. Install from pip:
+
+```bash
+python3 -m m pip install gitbooster
 ```
 
 3. Create a Repository:
