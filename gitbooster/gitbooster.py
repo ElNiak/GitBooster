@@ -64,6 +64,23 @@ def schedule_cron_job(script_path, frequency, user=''):
     cron.write()  # Save the crontab
     print(f"Cron job scheduled with frequency: {frequency}")
 
+def remove_cron_job(script_path, user=''):
+    """Remove the script's cron job."""
+    if not user:
+        user = os.getlogin()
+    print(f"Attempting to remove cron job for script: {script_path}")
+    cron = CronTab(user=True)
+    jobs_removed = [job for job in cron if script_path in job.command]
+    print(f"Found {len(jobs_removed)} job(s) to remove.")
+    for job in jobs_removed:
+        print(f"Removing job: {job}")
+        cron.remove(job)
+    cron.write()
+    if jobs_removed:
+        print("Cron job(s) removed successfully.")
+    else:
+        print("No cron job found to remove.")
+        
 def main():
     """Main function to handle file modification, commit, push, and scheduling."""
     parser = argparse.ArgumentParser(description="Automate GitHub stats by pushing commits to a repository.")
@@ -98,15 +115,28 @@ def main():
         action='store_true', 
         help="If set, the script will schedule itself in the crontab."
     )
-
+    
+    parser.add_argument('--remove-cron', action='store_true', help="If set, the script will remove its cron job.")
+    
+    parser.add_argument(
+        '--user', 
+        type=str, 
+        help="If set, use this user (no check) for the cronjob, else it uses the logged user."
+    )
+    
     args = parser.parse_args()
+    
+    assert os.path.exists(args.repo_path), "Repository path does not exist."
+    assert args.remove_cron != args.setup_cron, "Choose either --setup-cron or --remove-cron."
 
     # Modify and push changes
     modify_file(args.repo_path, args.file_to_modify)
     commit_and_push(args.repo_path, args.commit_messages)
 
     # Optionally schedule the cron job
-    if args.setup_cron:
+    if args.remove_cron:
+        remove_cron_job(script_path)
+    elif args.setup_cron:
         script_path = os.path.abspath(__file__)
         schedule_cron_job(script_path, args.schedule)
 

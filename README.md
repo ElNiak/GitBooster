@@ -40,6 +40,12 @@ python setup.py install
     git push -u origin main
 ```
 
+- Build the package:
+    
+```bash
+python setup.py sdist bdist_wheel
+```
+
 ### Usage
 
 - 1️⃣ *Run the Script Manually*: Modify a file, commit, and push the changes:
@@ -70,7 +76,10 @@ python3 gitbooster.py --repo-path /path/to/repo --file-to-modify activity_file.t
 | `--file-to-modify`  | String    | **Required**       | Name of the file to modify within the repository.                                              |
 | `--commit-messages` | List      | Random messages    | List of commit messages to randomly choose from.                                               |
 | `--setup-cron`      | Flag      | `False`            | If set, the script will schedule itself in the crontab.                                        |
+| `--remove-cron`     | Flag      | `False`            | If set, the script will remove itself in the crontab.                                          |
 | `--schedule`        | String    | `every3hours`      | Frequency for scheduling (`hourly`, `daily`, or `every3hours`).                                |
+| `--user`            | String        | `username`         | If set, use this user (no check) for the cronjob, else it uses the logged user              |
+
 
 ### Example
 
