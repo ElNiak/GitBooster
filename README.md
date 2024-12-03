@@ -22,7 +22,7 @@
 ### Prerequisites
 
 1. **Install Python** (3.6 or higher)
-2.a. Install the required Python libraries:
+2. (a) Install the required Python libraries:
 
 ```bash
 python3 -m venv .venv
@@ -30,24 +30,24 @@ source .venv/bin/activate
 python setup.py install
 ```
 
-2.b. Install from pip:
+2. (b) Install from pip:
 
 ```bash
-python3 -m m pip install gitbooster
+python3 -m  pip install gitbooster
 ```
 
 3. Create a Repository:
-    It is strongly recommended to use a dummy repository for testing and automation to avoid cluttering important repositories.
-    Example:
+   It is strongly recommended to use a dummy repository for testing and automation to avoid cluttering important repositories.
+   Example:
 
 ```bash
-    git init dummy-repo
-    cd dummy-repo
-    echo "Initial commit" > README.md
-    git add README.md
-    git commit -m "Initial commit"
-    git remote add origin https://github.com/your-username/dummy-repo.git
-    git push -u origin main
+git init dummy-repo
+cd dummy-repo
+echo "Initial commit" > README.md
+git add README.md
+git commit -m "Initial commit"
+git remote add origin https://github.com/your-username/dummy-repo.git
+git push -u origin main
 ```
 
 - Build the package:
@@ -60,25 +60,23 @@ pip install dist/GitBooster-0.0.1-py3-none-any.whl;
 
 ### Usage
 
-- 1️⃣ *Run the Script Manually*: Modify a file, commit, and push the changes:
+1. *Run the Script Manually*: Modify a file, commit, and push the changes:
 
 ```bash
 python3 gitbooster.py --repo-path /path/to/repo --file-to-modify activity_file.txt
 ```
 
-- 2️⃣ *Schedule the Script*: Add a cron job to automate the script execution:
+2. *Schedule the Script*: Add a cron job to automate the script execution:
 
 ```bash
 python3 gitbooster.py --repo-path /path/to/repo --file-to-modify activity_file.txt --setup-cron --schedule daily
 ```
 
-- 3️⃣ *Customize Commit Messages*: Use your own list of commit messages:
+ 3. *Customize Commit Messages*: Use your own list of commit messages:
 
 ```bash
 python3 gitbooster.py --repo-path /path/to/repo --file-to-modify activity_file.txt --commit-messages "Boosted activity" "Automation is awesome" "Another automated commit"
 ```
-
-#### 🔧 Arguments
 
 ### 🔧 Arguments
 
@@ -97,7 +95,8 @@ python3 gitbooster.py --repo-path /path/to/repo --file-to-modify activity_file.t
 
 ```bash
 cd GitBooster/;
-python3 gitbooster/gitbooster.py --repo-path $PWD/. --file-to-modify activity_file.txt --commit-messages "Boosted activity" "Automation is awesome" "Another automated commit" --setup-cron --schedule daily
+python3 -m -pip install gitbooster;
+gitbooster --repo-path $PWD/. --file-to-modify activity_file.txt --commit-messages "Boosted activity" "Automation is awesome" "Another automated commit" --setup-cron --schedule daily
 ```
 
 ```bash
