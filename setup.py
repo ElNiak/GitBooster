@@ -15,7 +15,7 @@ except:
   long_description = None
 setup(
     name='GitBooster',
-    version='0.0.1',
+    version='0.0.',
     packages=find_packages(),
     install_requires=[
         "setuptools",
@@ -31,6 +31,7 @@ setup(
     author_email='your.email@example.com',
     description='GitBooster:  Boosts your GitHub stats with automated, scheduled commits to keep your profile active.',
     long_description=long_description,
+    long_description_content_type="text/markdown",
     url='https://github.com/ElNiak/GitBooster',
     classifiers=[
         'Programming Language :: Python :: 3',
