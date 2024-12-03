@@ -55,7 +55,7 @@ def schedule_cron_job(script_path, frequency, user=''):
     if frequency == "hourly":
         job.minute.every(60)
     elif frequency == "daily":
-        job.hour.every(24)
+        job.hour.every(23)
     elif frequency == "every3hours":
         job.hour.every(3)
     else:
