@@ -9,6 +9,7 @@ from crontab import CronTab
 def modify_file(repo_path, file_to_modify):
     """Modify the specified file with a random line."""
     file_path = os.path.join(repo_path, file_to_modify)
+    print(f"Modifying file: {file_path}")
     
     # Ensure the file is inside the repository folder
     if not os.path.commonpath([repo_path]) == os.path.commonpath([repo_path, file_path]):
@@ -16,24 +17,31 @@ def modify_file(repo_path, file_to_modify):
     
     # Create subdirectories if they do not exist
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    print(f"Ensured directories exist for: {file_path}")
     
     # Create the file if it does not exist and append the modification
     with open(file_path, 'a') as file:
-        file.write(f"\nAutomated update at {datetime.datetime.now()}")
+        modification = f"\nAutomated update at {datetime.datetime.now()}"
+        file.write(modification)
+        print(f"Appended modification: {modification}")
 
 def commit_and_push(repo_path, commit_messages):
     """Commit and push changes to the repository."""
+    print(f"Committing and pushing changes in repo: {repo_path}")
     repo = Repo(repo_path)
     if repo.is_dirty(untracked_files=True):
+        print("Repository has changes.")
         # Add changes to the staging area
         repo.git.add(A=True)
+        print("Changes added to staging area.")
         # Commit changes
         commit_message = random.choice(commit_messages)
         repo.index.commit(commit_message)
+        print(f"Committed changes with message: {commit_message}")
         # Push changes
         origin = repo.remote(name='origin')
         origin.push()
-        print(f"Changes pushed: {commit_message}")
+        print(f"Changes pushed to remote repository: {commit_message}")
     else:
         print("No changes to commit.")
 
@@ -42,6 +50,7 @@ def schedule_cron_job(script_path, frequency, user=''):
     if not user:
         user = os.getlogin()
         
+    print(f"Scheduling cron job for user: {user}")
     cron = CronTab(user=user)  # Use the current user's crontab
 
     # Check if the job already exists
@@ -52,17 +61,20 @@ def schedule_cron_job(script_path, frequency, user=''):
 
     # Create a new cron job
     job = cron.new(command=f'python3 {script_path}')
+    print(f"Created new cron job: {job}")
     if frequency == "hourly":
         job.minute.every(60)
+        print("Set job frequency to hourly.")
     elif frequency == "daily":
         job.hour.every(23)
+        print("Set job frequency to daily.")
     elif frequency == "every3hours":
         job.hour.every(3)
+        print("Set job frequency to every 3 hours.")
     else:
         raise ValueError("Unsupported frequency value")
     
     cron.write()  # Save the crontab
-    
     print(f"Cron job scheduled with frequency: {frequency}")
 
 def remove_cron_job(script_path, user=''):
