@@ -15,7 +15,7 @@ except:
   long_description = None
 setup(
     name='GitBooster',
-    version='0.0.1',
+    version='1.0.0',
     packages=find_packages(),
     install_requires=[
         "setuptools",
