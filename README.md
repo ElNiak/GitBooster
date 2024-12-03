@@ -88,6 +88,22 @@ cd GitBooster/;
 python3 gitbooster/gitbooster.py --repo-path $PWD/. --file-to-modify activity_file.txt --commit-messages "Boosted activity" "Automation is awesome" "Another automated commit" --setup-cron --schedule daily
 ```
 
+```bash
+Modifying file: /home/ElNiak/Documents/Projects/GitBooster/./activity_file.txt
+Ensured directories exist for: /home/ElNiak/Documents/Projects/GitBooster/./activity_file.txt
+Appended modification: 
+Automated update at 2024-12-03 09:57:17.438760
+Committing and pushing changes in repo: /home/ElNiak/Documents/Projects/GitBooster/.
+Repository has changes.
+Changes added to staging area.
+Committed changes with message: Automation is awesome
+Changes pushed to remote repository: Automation is awesome
+Scheduling cron job for user: ElNiak
+Created new cron job: * * * * * python3 /home/ElNiak/Documents/Projects/GitBooster/gitbooster/gitbooster.py
+Set job frequency to daily.
+Cron job scheduled with frequency: daily
+```
+
  
 ### 🎯 Why Use GitBooster?
 
