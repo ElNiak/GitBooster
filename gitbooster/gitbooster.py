@@ -37,9 +37,12 @@ def commit_and_push(repo_path, commit_messages):
     else:
         print("No changes to commit.")
 
-def schedule_cron_job(script_path, frequency):
+def schedule_cron_job(script_path, frequency, user=''):
     """Schedule the script in the crontab."""
-    cron = CronTab(user=True)  # Use the current user's crontab
+    if not user:
+        user = os.getlogin()
+        
+    cron = CronTab(user=user)  # Use the current user's crontab
 
     # Check if the job already exists
     for job in cron:
