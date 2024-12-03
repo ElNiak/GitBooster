@@ -30,7 +30,7 @@ setup(
     author='ElNiak',
     author_email='your.email@example.com',
     description='GitBooster:  Boosts your GitHub stats with automated, scheduled commits to keep your profile active.',
-    long_description=''
+    long_description=long_description,
     url='https://github.com/ElNiak/GitBooster',
     classifiers=[
         'Programming Language :: Python :: 3',
