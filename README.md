@@ -3,6 +3,7 @@
 [![Upload Python Package](https://github.com/ElNiak/GitBooster/actions/workflows/python-publish.yml/badge.svg)](https://github.com/ElNiak/GitBooster/actions/workflows/python-publish.yml)
 [![Pylint](https://github.com/ElNiak/GitBooster/actions/workflows/pylint.yml/badge.svg)](https://github.com/ElNiak/GitBooster/actions/workflows/pylint.yml)
 [![Python application](https://github.com/ElNiak/GitBooster/actions/workflows/python-app.yml/badge.svg)](https://github.com/ElNiak/GitBooster/actions/workflows/python-app.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/67da47ea926743e1b5dce0af09b9ed57)](https://app.codacy.com/gh/ElNiak/GitBooster/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 **GitBooster** is a Python-powered automation tool designed to keep your GitHub activity graph green by automatically modifying files, committing changes, and pushing them to your repositories. With seamless scheduling via cron jobs, GitBooster ensures your contributions remain consistent, all while being easy to configure and use.
 
