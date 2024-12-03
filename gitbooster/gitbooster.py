@@ -62,6 +62,7 @@ def schedule_cron_job(script_path, frequency, user=''):
         raise ValueError("Unsupported frequency value")
     
     cron.write()  # Save the crontab
+    
     print(f"Cron job scheduled with frequency: {frequency}")
 
 def remove_cron_job(script_path, user=''):
@@ -132,12 +133,13 @@ def main():
     # Modify and push changes
     modify_file(args.repo_path, args.file_to_modify)
     commit_and_push(args.repo_path, args.commit_messages)
+    
+    script_path = os.path.abspath(__file__)
 
     # Optionally schedule the cron job
     if args.remove_cron:
         remove_cron_job(script_path)
     elif args.setup_cron:
-        script_path = os.path.abspath(__file__)
         schedule_cron_job(script_path, args.schedule)
 
 if __name__ == "__main__":
