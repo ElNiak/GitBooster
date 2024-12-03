@@ -7,9 +7,9 @@ setup(
     version='0.0.1',
     packages=find_packages(),
     install_requires=[
+        "setuptools",
         'GitPython',
         'python-crontab',
-        "setuptools"
     ],
     entry_points={
         'console_scripts': [
@@ -25,4 +25,5 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
+    python_requires='>=3.6',
 )

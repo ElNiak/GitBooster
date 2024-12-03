@@ -43,7 +43,9 @@ python setup.py install
 - Build the package:
     
 ```bash
-python setup.py sdist bdist_wheel
+rm -rf build dist *.egg-info;
+python setup.py sdist bdist_wheel;
+pip install dist/GitBooster-0.0.1-py3-none-any.whl;
 ```
 
 ### Usage
